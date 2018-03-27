@@ -1,17 +1,24 @@
-from bs4 import BeautifulSoup
 import requests
 import json
+from termcolor import colored
+from CountryFetcher import return_hashtable
 
 APIKey = "706f6fdcadc34c25bf93687ed509ac42"
 
-country = raw_input("Enter Country: ")
+print("Fetching Country List.......")
+country_hashed = return_hashtable()
 
-url="https://newsapi.org/docs/endpoints/top-headlines"
-response = requests.get(url)
+while True:
+	required_country = raw_input("Which country's news do you want to see?(Add name as in list above): ")
 
-soup = BeautifulSoup(response.content,'html.parser')
+	country_code = country_hashed[required_country]
+	url = "https://newsapi.org/v2/top-headlines?country="+country_code+"&apiKey="+APIKey
+	
 
-paragraphs = soup.find_all('p',class_='table-group-item-description').select('code')
+	response = requests.get(url)
+	content = response.json()
 
-
-
+	for article in content["articles"]:
+		print colored(article["title"],'red')
+		print colored(article["description"],'green')
+		print "\n"

@@ -27,7 +27,7 @@ def return_hashtable():
 
 			soup = BeautifulSoup(response.content,'html.parser')
 			code=soup.select('div div h3')
-			print country_code,code[0].get_text()
+			print code[0].get_text()
 			hashtable[code[0].get_text()]=country_code
 
 		except:
