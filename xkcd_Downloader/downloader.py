@@ -34,7 +34,7 @@ class LinkGenerator(object):
 
 		while counter<5:
 			temp = random.randint(1,self.max)
-			if(temp in LinkGenerator.downloadedList):
+			if(temp in LinkGenerator.downloadedList) or (temp in LinkGenerator.toDownloadList):
 				pass
 			else:
 				LinkGenerator.toDownloadList.append(temp)
@@ -51,7 +51,7 @@ class LinkGenerator(object):
 
 	@classmethod
 	def writer(cls):
-		with open("numberList.txt",'w') as f:
+		with open("numberList.txt",'a') as f:
 			for item in LinkGenerator.toDownloadList:
 				f.write(str(item) + '\n')
 
