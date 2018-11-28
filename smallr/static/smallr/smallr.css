@@ -1,0 +1,8 @@
+{% load static %}
+body{
+	background-image: url("{% static "smallr/Smallr.png" %}");
+}
+
+h1 {
+	font-size: 16
+}
