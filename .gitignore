@@ -2,3 +2,5 @@
 *.jpg
 *.jpeg
 xkcd_Downloader/imageRepository/
+__pycache__
+
