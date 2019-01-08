@@ -1,6 +1,6 @@
 import datetime
 
-blocked_websites = ['www.facebook.com','www.instagram.com','www.netflix.com','www.quora.com','www.youtube.com']
+blocked_websites = ['www.facebook.com','www.instagram.com','www.netflix.com','www.quora.com','www.youtube.com','www.linkedin.com']
 
 file_path = "/etc/hosts"
 
@@ -41,9 +41,10 @@ def block_checker():
 if __name__ == "__main__":
 
 	current_hour = datetime.datetime.now().hour
-	if current_hour >=7 and current_hour<=21:
+	if current_hour >=7 and current_hour<=20:
 
 		if not block_checker():
 			block()
 	else:
-		unblock()
+		if block_checker():
+			unblock()
