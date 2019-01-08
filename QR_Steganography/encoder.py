@@ -7,7 +7,7 @@ import numpy as np
 def QR_Code_Generator():
 	text = input("Enter text to be encoded: ")
 	qr = pq.create(text)
-	qr.png("QR.png")
+	qr.png("QR.png",scale=15)
 
 def Steganographer(imagepath):
 	qr = cv2.imread("QR.png")
@@ -20,6 +20,7 @@ def Steganographer(imagepath):
 		height_index = 0
 
 		while width_index < qr.shape[0]:
+			height_index=0
 			while height_index < qr.shape[1]:
 				#Black needs to have odd total, White needs to have even total
 				total = np.sum(image[width_index][height_index])
